@@ -23,6 +23,9 @@ class FormToJSON {
   }
 
   prepareData (field) {
+    if (!field.name) {
+      return console.warn('[Warning in `FormToJSON.init()`] Missing `name` attribute on some form element. It will not be included in the returned object.')
+    }
     switch (field.type) {
       case 'checkbox':
         this.addData(field.name, field.checked)
